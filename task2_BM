@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Step 1: Create a directory named 'TrainingDay2'
+mkdir TrainingDay2
+
+# Step 2: Download files from the drive (Replace 'your_drive_link' with the actual link)
+wget -O TrainingDay2/file1.txt "your_drive_link/file1.txt"
+wget -O TrainingDay2/file2.txt "your_drive_link/file2.txt"
+# Add more wget commands as needed for additional files
+
+# Step 3: Retrieve system information and save it to a txt file
+echo "Hostname: $(hostname)" > TrainingDay2/system_info.txt
+echo "CPU Information: $(lscpu)" >> TrainingDay2/system_info.txt
+echo "Total RAM: $(free -h | awk '/Mem/ {print $2}')" >> TrainingDay2/system_info.txt
+echo "Available RAM: $(free -h | awk '/Mem/ {print $7}')" >> TrainingDay2/system_info.txt
+echo "Disk Space Information:" >> TrainingDay2/system_info.txt
+df -h / >> TrainingDay2/system_info.txt
+
+echo "Script executed successfully. Check TrainingDay2 directory for the results."
